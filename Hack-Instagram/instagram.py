@@ -1,8 +1,4 @@
-# Date: 06/10/2017
-# Distro: Kali linux
-# Desc: Instagram Bruteforce
-#
-#
+
 
 import os
 import time
