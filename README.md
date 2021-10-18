@@ -1,6 +1,11 @@
 # Hacking
 Hacking refers to activities that seek to compromise digital devices, such as computers, smartphones, tablets, and even entire networks. Hackers are motivated by personal gain, to make a statement, or just because they can.
 
+# What Is Cybersecurity?
+Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks. These cyberattacks are usually aimed at accessing, changing, or destroying sensitive information; extorting money from users; or interrupting normal business processes.
+
+Implementing effective cybersecurity measures is particularly challenging today because there are more devices than people, and attackers are becoming more innovative.
+
 # What is a denial-of-service (DoS) attack?
 A denial-of-service (DoS) attack is a malicious attempt to overwhelm a web property with traffic in order to disrupt its normal operations.
 
