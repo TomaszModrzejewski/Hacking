@@ -1,4 +1,3 @@
-#!/usr/bin/env python2.7
 import tweepy
 
 # This will take an image already saved on the computer.
