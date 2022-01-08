@@ -9,6 +9,7 @@ the example. Don't forget to save the model using model.save('model.h5')
 '''
 
 
+
 import keras
 import numpy as np
 from scipy import misc
@@ -20,7 +21,7 @@ runs = 1000
 
 print('Running pure Noise Test')
 successes = 0
-for i in range(runs):
+for _ in range(runs):
     # Creating a pure Noise Image
     processedImage = np.random.random([1, 28, 28, 1])
 
@@ -29,7 +30,7 @@ for i in range(runs):
 
     # Only Digit 4 grants access!
     if shownDigit == 4:
-        successes = successes + 1
+        successes += 1
 
 print('Had a ' + str(successes) + ' / ' + str(runs) + ' success rate')
 

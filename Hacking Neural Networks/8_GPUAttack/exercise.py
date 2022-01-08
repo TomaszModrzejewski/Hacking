@@ -2,6 +2,7 @@
 Please read the README.md for Exercise instructions!
 '''
 
+
 import pycuda.driver as cuda
 import pycuda.autoinit
 import numpy as np
@@ -25,14 +26,14 @@ maxWidth = 4
 if width != height:
     print("Image must be square in size and a maximum of 4x4!")
     exit()
-    
+
 linearizedImage = np.zeros(width * height, dtype=np.float32)
 for i in range(width):
     for j in range(height):
         linearizedImage[i * height + j] = image[i][j] / 255.0
 
 
-processedImage = np.zeros(maxWidth * maxWidth, dtype=np.float32)
+processedImage = np.zeros(maxWidth**2, dtype=np.float32)
 
 # Allocate Memory for the Images on the GPU
 gpuImgSize = np.int32(width)
@@ -95,7 +96,7 @@ classify = mod.get_function("classify")
 # Run the Preprocessor for each Line in the Image
 preproc(gpuImgSize, gpuImage, gpuProcessedImage,  
      block=(width, 1, 1))
-     
+
 # Run the Classifier once
 classify(gpuProcessedImage, gpuWeights, gpuBiases, gpuResults,
      block=(1, 1, 1))

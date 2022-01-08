@@ -29,11 +29,7 @@ def tokenizeCode(codeSnippet):
 
     tokens = tokenizer.tokenize(nltk.word_tokenize(codeSnippet))
 
-    indexedTokens = []
-    for token in tokens:
-        indexedTokens.append(tokenDict.get(token, 0))
-    
-    return indexedTokens
+    return [tokenDict.get(token, 0) for token in tokens]
 
 
 x_train = []
@@ -117,10 +113,7 @@ realTest = [
     'printf("");',
 ]
 
-tokenizedTest = []
-
-for test in realTest:
-    tokenizedTest.append(tokenizeCode(test))
+tokenizedTest = [tokenizeCode(test) for test in realTest]
 
 tokenizedTest = sequence.pad_sequences(tokenizedTest, maxlen=maxlen)
 results = model.predict(tokenizedTest)

@@ -6,6 +6,7 @@ This code is a modified version of:
 https://github.com/keras-team/keras/blob/master/examples/lstm_seq2seq_restore.py
 '''
 
+
 from __future__ import print_function
 
 from keras.models import Model, load_model
@@ -45,8 +46,8 @@ input_characters = sorted(list(input_characters))
 target_characters = sorted(list(target_characters))
 num_encoder_tokens = len(input_characters)
 num_decoder_tokens = len(target_characters)
-max_encoder_seq_length = max([len(txt) for txt in input_texts])
-max_decoder_seq_length = max([len(txt) for txt in target_texts])
+max_encoder_seq_length = max(len(txt) for txt in input_texts)
+max_decoder_seq_length = max(len(txt) for txt in target_texts)
 
 input_token_index = dict(
     [(char, i) for i, char in enumerate(input_characters)])
@@ -85,10 +86,8 @@ decoder_model = Model(
 
 # Reverse-lookup token index to decode sequences back to
 # something readable.
-reverse_input_char_index = dict(
-    (i, char) for char, i in input_token_index.items())
-reverse_target_char_index = dict(
-    (i, char) for char, i in target_token_index.items())
+reverse_input_char_index = {i: char for char, i in input_token_index.items()}
+reverse_target_char_index = {i: char for char, i in target_token_index.items()}
 
 
 # Decodes an input sequence.  Future work should support beam search.

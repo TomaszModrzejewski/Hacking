@@ -27,9 +27,5 @@ def tokenizeCode(someCode):
     tokenizer = nltk.tokenize.MWETokenizer()
     tokens = tokenizer.tokenize(nltk.word_tokenize(someCode))
 
-    indexedTokens = []
-    for token in tokens:
-        indexedTokens.append(tokenDict.get(token, 0))
-    
-    return indexedTokens
+    return [tokenDict.get(token, 0) for token in tokens]
 

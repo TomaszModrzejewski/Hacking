@@ -16,6 +16,7 @@ This sounds harder than it is:
    input to the target network, so that "access granted" lights up
 '''
 
+
 import keras
 import numpy as np
 from skimage import io
@@ -38,7 +39,7 @@ attack_model = Sequential()
 
 # Yes, its perfectly enough to have a single dense layer. We only want to create
 # a single image. We don't care about overfitting or generalisation or anything.
-attack_model = Dense(28 * 28, activation='relu', input_dim=10)(attack_vector)
+attack_model = Dense(28**2, activation='relu', input_dim=10)(attack_vector)
 attack_img = Reshape((28, 28, 1))(attack_model)
 attack_model = Model(attack_vector, attack_img)
 
@@ -61,7 +62,7 @@ for i in range(batch_size):
 
 for x in range(total_epochs):
     combined_model.train_on_batch(final_target, final_target)
-    if x % (int(total_epochs / 10)) == 0:
+    if x % (total_epochs // 10) == 0:
         print('Epoch ' + str(x) + ' / ' + str(total_epochs))
 
 # The model is trained, let's generate the fake-ID and save it!

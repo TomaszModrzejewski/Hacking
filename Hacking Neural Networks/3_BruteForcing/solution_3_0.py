@@ -5,6 +5,7 @@ The idea is to add some noise to our best-guess fake-ID.
 '''
 
 
+
 import keras
 import numpy as np
 from skimage import io
@@ -26,7 +27,7 @@ for i in range(runs):
 
     # Only Digit 4 grants access!
     if shownDigit == 4:
-        successes = successes + 1
+        successes += 1
 
 print('Pure Random had a ' + str(successes) + ' / ' + str(runs) + ' success rate')
 
@@ -45,7 +46,7 @@ max_intensity = 50 # / 100
 
 for intensity in range(min_intensity, max_intensity):
     successes = 0
-    for i in range(runs):
+    for _ in range(runs):
         # Adding some Random noise to the image
         noise = np.random.random([1, 28, 28, 1]) * float(intensity) * 0.01
 
@@ -56,7 +57,7 @@ for intensity in range(min_intensity, max_intensity):
 
         # Only Digit 4 grants access!
         if shownDigit == 4:
-            successes = successes + 1
+            successes += 1
 
     print('Rand-Intensity ' + str(intensity) + ' had a ' + str(successes) + ' / ' + str(runs) + ' success rate')
 
@@ -69,7 +70,7 @@ max_intensity = 35 # / 100
 
 for mu in range(min_intensity, max_intensity):
     successes = 0
-    for i in range(runs):
+    for _ in range(runs):
         # Adding some Normal distributed Noise to the image
         noise = np.random.normal(float(mu) * 0.01, 0.05, [1, 28, 28, 1]) 
 
@@ -80,6 +81,6 @@ for mu in range(min_intensity, max_intensity):
 
         # Only Digit 4 grants access!
         if shownDigit == 4:
-            successes = successes + 1
+            successes += 1
 
     print('Mu-intensity ' + str(mu) + ' had a ' + str(successes) + ' / ' + str(runs) + ' success rate')
